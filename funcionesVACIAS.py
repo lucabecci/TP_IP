@@ -116,3 +116,5 @@ def procesar(candidata, silabasEnPantalla, posiciones, lemario):
         puntaje = Puntos(candidata)
     return puntaje
 
+#funciones de configuracion
+

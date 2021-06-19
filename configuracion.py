@@ -13,4 +13,3 @@ COLOR_TIEMPO_FINAL = (200,20,10)
 Punto = namedtuple('Punto','x y')
 
 
-

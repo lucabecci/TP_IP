@@ -48,7 +48,9 @@ def main():
 
             if True:
             	fps = 3
-
+            if segundos < 2:
+                silabasEnPantalla = []
+                silabasEnPantalla.append("Game Over")
             #Buscar la tecla apretada del modulo de eventos de pygame
             for e in pygame.event.get():
 
@@ -67,9 +69,7 @@ def main():
                         puntos += procesar(candidata, silabasEnPantalla, posiciones, lemario)
                         candidata = ""
 
-
             segundos = TIEMPO_MAX - pygame.time.get_ticks()/1000
-
             #Limpiar pantalla anterior
             screen.fill(COLOR_FONDO)
 
