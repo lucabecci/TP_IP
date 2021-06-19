@@ -13,7 +13,6 @@ def lectura(archivo, lista):
     lista = nueva_lista
     return lista
 
-
 def actualizar(silabasEnPantalla,posiciones,listaDeSilabas):
     ## eliminar viejas y baja las palabras
     for i in range(len(silabasEnPantalla)-1,-1,-1):
@@ -41,41 +40,77 @@ def estaCerca(elem, lista):
     return False
 
 def nuevaSilaba(silabas):
-    return silabas[random.randint(0, len(silabas) - 1)]
+    if len(silabas) != 0:
+        return silabas[random.randint(0, len(silabas) - 1)]
 
 def quitar(candidata, silabasEnPantalla, posiciones):
-    for i in silabasEnPantalla:
-        if candidata == silabasEnPantalla[i].strip():
+    silabasCandidata = dameSilabas(candidata)
+    for i in range(0, len(silabasEnPantalla) - 1):
+        if silabasEnPantalla[i] in silabasCandidata:
             posiciones.pop(i)
             silabasEnPantalla.pop(i)
-        
+       
 def dameSilabas(candidata):
     candidata = separador(candidata)
     listaSilabas = []
     silaba = ""
-    print(candidata)
     for x in range(0, len(candidata)):
         if candidata[x] != "-":
             silaba += candidata[x]
         else:
             listaSilabas.append(silaba)
             silaba=""
-        if len(listaSilabas) == x:
+        if x == len(candidata) - 1:
             listaSilabas.append(silaba)
-
+    return listaSilabas
 
 def esValida(candidata, silabasEnPantalla, lemario):
-    silaba = silabasEnPantalla[0]
     silabasLista = dameSilabas(candidata)
-    for x in candidata:
-        if x == silaba:
+    encontradas = 0
+    aEncontrar = len(silabasLista)
+    for x in range(0, len(silabasLista)):
+        if silabasLista[x] in silabasEnPantalla:
+            encontradas += 1
+    if aEncontrar == encontradas:
+        for i in range(0, len(lemario)):
+            if candidata == lemario[i]:
+                return True
+    return False
+
+def esVocal(letra):
+    vocal="aeiou"
+    for x in vocal:
+        if x == letra:
+            return True
+    return False
+
+def esDificil(letra):
+    dificil="jkqwxyz"
+    for x in dificil:
+        if x == letra:
             return True
     return False
 
 def Puntos(candidata):
-        pass
+    puntos = 0
+    for x in candidata:
+        if esVocal(x):
+            puntos += 1
+        elif esDificil(x):
+            puntos += 5
+        elif not esVocal(x) and not esDificil(x):
+            puntos += 2
+    return puntos
 
 def procesar(candidata, silabasEnPantalla, posiciones, lemario):
-    dameSilabas(candidata)
-    # esValida(candidata, silabasEnPantalla, lemario)
-    pass
+    puntaje = 0
+    if esValida(candidata, silabasEnPantalla, lemario)==True:
+        print("Es valida")
+        print(candidata)
+        # quitar(candidata,silabasEnPantalla,posiciones)
+        puntaje = Puntos(candidata)
+    else:
+        print("No es valida")
+        print(candidata)
+    return puntaje
+
