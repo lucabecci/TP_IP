@@ -45,10 +45,17 @@ def nuevaSilaba(silabas):
 
 def quitar(candidata, silabasEnPantalla, posiciones):
     silabasCandidata = dameSilabas(candidata)
-    for i in range(0, len(silabasEnPantalla) - 1):
-        if silabasEnPantalla[i] in silabasCandidata:
-            posiciones.pop(i)
-            silabasEnPantalla.pop(i)
+    for x in silabasCandidata:
+        borrarValor(x, silabasEnPantalla, posiciones)
+
+def borrarValor(silaba, silabasEnPantalla, posiciones):
+    for x in range(0, len(silabasEnPantalla)):
+        if silabasEnPantalla[x] == silaba:
+            silabasEnPantalla.pop(x)
+            posiciones.pop(x)
+            return 
+        else:
+            continue
        
 def dameSilabas(candidata):
     candidata = separador(candidata)
@@ -106,11 +113,7 @@ def procesar(candidata, silabasEnPantalla, posiciones, lemario):
     puntaje = 0
     if esValida(candidata, silabasEnPantalla, lemario)==True:
         print("Es valida")
-        print(candidata)
-        # quitar(candidata,silabasEnPantalla,posiciones)
+        quitar(candidata,silabasEnPantalla,posiciones)
         puntaje = Puntos(candidata)
-    else:
-        print("No es valida")
-        print(candidata)
     return puntaje
 
