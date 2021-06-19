@@ -54,8 +54,6 @@ def borrarValor(silaba, silabasEnPantalla, posiciones):
             silabasEnPantalla.pop(x)
             posiciones.pop(x)
             return 
-        else:
-            continue
        
 def dameSilabas(candidata):
     candidata = separador(candidata)
@@ -111,8 +109,9 @@ def Puntos(candidata):
 
 def procesar(candidata, silabasEnPantalla, posiciones, lemario):
     puntaje = 0
-    if esValida(candidata, silabasEnPantalla, lemario)==True:
-        print("Es valida")
+    if candidata == "":
+        return puntaje
+    if esValida(candidata, silabasEnPantalla, lemario) == True:
         quitar(candidata,silabasEnPantalla,posiciones)
         puntaje = Puntos(candidata)
     return puntaje
