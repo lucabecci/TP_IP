@@ -22,13 +22,13 @@ def actualizar(silabasEnPantalla,posiciones,listaDeSilabas):
     ##evita superposiciones
     ocupadosX=[]
     ## agregar nuevas
-    if(len(posiciones)==0 or posiciones[len(posiciones)-1].y > 15 ):
+    if(len(posiciones)==0 or posiciones[len(posiciones)-1].y > 40 ): #>15
         silaba=nuevaSilaba(listaDeSilabas)
         x=random.randrange(0,ANCHO-20)
         while(estaCerca(x,ocupadosX)):
             x=random.randrange(0,ANCHO-20)
         ocupadosX.append(x)
-        posiciones.append(Punto(x,-1))
+        posiciones.append(Punto(x,30))#x,-1
         silabasEnPantalla.append(silaba)
 
 def estaCerca(elem, lista):

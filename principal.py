@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-import os, random, sys, math, time
+import os, random, sys, math
 
 import pygame
 from pygame.locals import *
@@ -41,7 +41,6 @@ def main():
         lemario=[]
         gameover = pygame.mixer.Sound('game-over.mp3')
 
-
         archivo= open("silabas.txt","r", encoding="latin-1")
         listaDeSilabas = lectura(archivo, listaDeSilabas)
 
@@ -54,6 +53,7 @@ def main():
         # 1 frame cada 1/fps segundos
             gameClock.tick(fps)
             totaltime += gameClock.get_time()
+           
             if True:
             	fps = 3
 
@@ -65,7 +65,6 @@ def main():
                 pygame.mixer.music.stop()
                 gameover.play()
                 segundos = -1
-            
             #Buscar la tecla apretada del modulo de eventos de pygame
             for e in pygame.event.get():
 
