@@ -61,10 +61,11 @@ def main():
             if segundos >= 0 and segundos <= 0.35:
                 total = "HICISTE " + str(puntos) +  " PUNTOS"
                 silabasEnPantalla = ["FIN DEL TIEMPO", total]
-                posiciones = [Punto(300,250),Punto(300,200)]
+                posiciones = [Punto(315,250),Punto(300,200)]
                 pygame.mixer.music.stop()
                 gameover.play()
                 segundos = -1
+        
             #Buscar la tecla apretada del modulo de eventos de pygame
             for e in pygame.event.get():
 

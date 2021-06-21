@@ -22,6 +22,7 @@ def actualizar(silabasEnPantalla,posiciones,listaDeSilabas):
     ##evita superposiciones
     ocupadosX=[]
     ## agregar nuevas
+    ## Aplicamos un cambio para empezar a mostrar las silabas a partir del borde superior del pizarron
     if(len(posiciones)==0 or posiciones[len(posiciones)-1].y > 40 ): #>15
         silaba=nuevaSilaba(listaDeSilabas)
         x=random.randrange(0,ANCHO-20)
