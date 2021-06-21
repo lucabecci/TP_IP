@@ -3,7 +3,6 @@ from configuracion import *
 from funcionesSeparador import *
 
 import random
-import math
 
 def lectura(archivo, lista):
     nueva_lista = []
@@ -114,6 +113,4 @@ def procesar(candidata, silabasEnPantalla, posiciones, lemario):
         quitar(candidata,silabasEnPantalla,posiciones)
         puntaje = Puntos(candidata)
     return puntaje
-
-#funciones de configuracion
 

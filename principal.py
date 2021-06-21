@@ -26,6 +26,9 @@ def main():
         segundos = TIEMPO_MAX
         fps = FPS_inicial
 
+        #fonde 
+        imagen_redimensionada=pygame.transform.scale(COLOR_FONDO, (900, 600))
+
         puntos = 0
         candidata = ""
         silabasEnPantalla = []
@@ -45,12 +48,16 @@ def main():
         # 1 frame cada 1/fps segundos
             gameClock.tick(fps)
             totaltime += gameClock.get_time()
-
             if True:
             	fps = 3
-            if segundos < 2:
+
+            #Muestra el game over
+            if segundos >= 0 and segundos <= 0.50:
                 silabasEnPantalla = []
-                silabasEnPantalla.append("Game Over")
+                posiciones = []
+                posiciones.append(Punto(320,250))
+                silabasEnPantalla.append("GAME OVER")
+            
             #Buscar la tecla apretada del modulo de eventos de pygame
             for e in pygame.event.get():
 
@@ -71,7 +78,7 @@ def main():
 
             segundos = TIEMPO_MAX - pygame.time.get_ticks()/1000
             #Limpiar pantalla anterior
-            screen.fill(COLOR_FONDO)
+            screen.blit(imagen_redimensionada,[-60,0])
 
             #Dibujar de nuevo todo
             dibujar(screen, candidata, silabasEnPantalla, posiciones, puntos, segundos)
