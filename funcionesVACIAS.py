@@ -68,6 +68,8 @@ def dameSilabas(candidata):
     return listaSilabas
 
 def esValida(candidata, silabasEnPantalla, lemario):
+    correcto=pygame.mixer.Sound('correct-ding.wav')
+    incorrecto=pygame.mixer.Sound('perder-incorrecto-no-valido.wav')
     silabasLista = dameSilabas(candidata)
     encontradas = 0
     aEncontrar = len(silabasLista)
@@ -77,7 +79,9 @@ def esValida(candidata, silabasEnPantalla, lemario):
     if aEncontrar == encontradas:
         for i in range(0, len(lemario)):
             if candidata == lemario[i]:
+                correcto.play()
                 return True
+    incorrecto.play()
     return False
 
 def esVocal(letra):

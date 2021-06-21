@@ -14,7 +14,10 @@ def main():
         #Centrar la ventana y despues inicializar pygame
         os.environ["SDL_VIDEO_CENTERED"] = "1"
         pygame.init()
-        #pygame.mixer.init()
+        pygame.mixer.init()
+        pygame.mixer.music.load('dinah-take-2.mp3')
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.3)
 
         #Preparar la ventana
         pygame.display.set_caption("Rapido...")
@@ -57,6 +60,7 @@ def main():
                 posiciones = []
                 posiciones.append(Punto(320,250))
                 silabasEnPantalla.append("GAME OVER")
+                pygame.mixer.music.stop()
             
             #Buscar la tecla apretada del modulo de eventos de pygame
             for e in pygame.event.get():
