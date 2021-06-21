@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-import os, random, sys, math
+import os, random, sys, math, time
 
 import pygame
 from pygame.locals import *
@@ -8,6 +8,7 @@ from configuracion import *
 from extras import *
 from funcionesSeparador import *
 from funcionesVACIAS import *
+
 
 #Funcion principal
 def main():
@@ -38,6 +39,8 @@ def main():
         posiciones = []
         listaDeSilabas=[]
         lemario=[]
+        gameover = pygame.mixer.Sound('game-over.mp3')
+
 
         archivo= open("silabas.txt","r", encoding="latin-1")
         listaDeSilabas = lectura(archivo, listaDeSilabas)
@@ -55,12 +58,13 @@ def main():
             	fps = 3
 
             #Muestra el game over
-            if segundos >= 0 and segundos <= 0.50:
-                silabasEnPantalla = []
-                posiciones = []
-                posiciones.append(Punto(320,250))
-                silabasEnPantalla.append("GAME OVER")
+            if segundos >= 0 and segundos <= 0.35:
+                total = "HICISTE " + str(puntos) +  " PUNTOS"
+                silabasEnPantalla = ["FIN DEL TIEMPO", total]
+                posiciones = [Punto(300,250),Punto(300,200)]
                 pygame.mixer.music.stop()
+                gameover.play()
+                segundos = -1
             
             #Buscar la tecla apretada del modulo de eventos de pygame
             for e in pygame.event.get():

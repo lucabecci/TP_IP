@@ -72,7 +72,6 @@ def dibujar(screen, candidata, listaNombres, posiciones, puntos, segundos):
 
     #Linea del piso
     pygame.draw.line(screen, (255,255,255), (0, ALTO-70) , (ANCHO, ALTO-70), 5)
-
     ren1 = defaultFont.render(candidata, 1, COLOR_TEXTO)
     ren2 = defaultFont.render("Puntos: " + str(puntos), 1, COLOR_TEXTO)
     if(segundos<15):

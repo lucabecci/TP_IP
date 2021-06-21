@@ -3,7 +3,7 @@ import pygame
 
 TAMANNO_LETRA = 20
 FPS_inicial = 3
-TIEMPO_MAX = 61
+TIEMPO_MAX = 10
 
 ANCHO = 800
 ALTO = 600
