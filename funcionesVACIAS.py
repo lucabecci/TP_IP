@@ -6,10 +6,9 @@ import random
 import math
 
 def lectura(archivo, lista):
-    lista = archivo.readlines()
     nueva_lista = []
-    for i in range(len(lista)):
-        nueva_lista.append(lista[i].strip())
+    for i in archivo:
+        nueva_lista.append(i.strip())
     lista = nueva_lista
     return lista
 
